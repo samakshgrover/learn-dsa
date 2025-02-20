@@ -24,4 +24,4 @@ const mergeArr = (arr1: number[], arr2: number[], n: number, m: number) => {
   return arr1;
 };
 
-console.log(mergeArr([1, 3, 5], [1], 3, 1));
+console.log(mergeArr([1, 3, 5], [1, 2, 6], 3, 3));

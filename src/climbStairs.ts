@@ -6,6 +6,8 @@ function climbStairs(n: number, arr: any[] = []) {
   return arr[n];
 }
 
+// function climbStairsDP(n: number): number {}
+
 // console.time("dp");
 // console.log(climbStairs(400));
 // console.timeEnd("dp");

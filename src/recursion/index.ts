@@ -2,9 +2,7 @@ function subset(str: string): string[] {
   if (!str) return [""];
   let out: string[] = [];
 
-  for (let i = 0; i <= str.length; i++) {
-
-  }
+  for (let i = 0; i <= str.length; i++) {}
   return out;
 }
 
@@ -23,16 +21,17 @@ function sortArray(arr: number[]): number[] {
   if (arr.length <= 0) return [];
 
   let sortedArr = sortArray(arr.slice(1));
-  return arrangeArray(sortedArr, arr[0])
+  return arrangeArray(sortedArr, arr[0]);
 }
 
 console.log(sortArray([5, 3, 2, 7, 9, 0]));
 
 function arrangeArray(arr: number[], target: number): number[] {
-  if (arr.length === 0) return [target]
+  if (arr.length === 0) return [target];
   if (arr[0] > target) {
-    return [target, ...arr]
+    return [target, ...arr];
   } else {
-    return [arr[0], ...arrangeArray(arr.slice(1), target)]
+    return [arr[0], ...arrangeArray(arr.slice(1), target)];
   }
 }
+export {};

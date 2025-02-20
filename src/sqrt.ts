@@ -4,6 +4,8 @@ function mySqrt(x: number): number {
     r = x;
 
   while (l <= r) {
+    // Can also use right shift operator
+    // number >> 1
     const m = Math.floor((l + r) / 2);
     const mSquared = m * m;
 

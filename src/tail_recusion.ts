@@ -1,5 +1,5 @@
 //simple recursion
-function fib_simple(n: number) {
+function fib_simple(n: number): number {
   if (n === 0) return 0;
   if (n === 1) return 1;
   return fib_simple(n - 1) + fib_simple(n - 2);
@@ -11,6 +11,9 @@ function go(n: number, [a, b]: [a: number, b: number]) {
   if (n === 1) return b;
   return go(n - 1, [b, a + b]);
 }
+
 function fib_tail(n: number) {
   return go(n, [0, 1]);
 }
+
+console.log(fib_tail(100000));

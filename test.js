@@ -1,40 +1,47 @@
 /**
- * Finds the number of ways to assign positive or negative integers to an array
- * such that the sum of the integers is equal to a given target value.
- *
- * @param {number[]} nums - The array of integers.
- * @param {number} diff - The target value.
- * @return {number} The number of ways to assign integers to the array such that
- *                  the sum is equal to the target value.
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
  */
-function findTargetSumWays(nums, diff) {
-  const n = nums.length;
-  const sum = nums.reduce((acc, curr) => acc + curr);
-  const target = (sum + diff) / 2;
+function twoSum(arr, target) {
+  let i = 0,
+    j = arr.length - 1;
+  arr.sort((a, b) => a - b);
 
-  // base cases
-  if (n === 1) return Math.abs(diff) === nums[0] ? 1 : 0;
-  if (Math.abs(target) % 1 !== 0) return 0;
-
-  const dp = Array(target + 1).fill(0);
-  dp[0] = 1;
-
-  // The outer loop iterates over each element in the array.
-  // The inner loop updates the dp array by considering each element
-  // as a candidate to be included in the sum that sums up to the target.
-  // It iterates from the target down to the current element's value because
-  // if the current element's value is greater than the target,
-  // including it would not contribute to the sum being equal to the target.
-  // The number of ways to reach the current sum with the current element
-  // included is the sum of the number of ways to reach the current sum
-  // without the current element and the number of ways to reach the current
-  // sum - the current element's value with the current element included.
-  for (let i = 0; i < n; i++) {
-    for (let j = target; j >= nums[i]; j--) {
-      dp[j] += dp[j - nums[i]];
-    }
+  while (i < j) {
+    console.log({ i, j });
+    if (arr[i] + arr[j] === target) {
+      console.log({ i, j });
+      break;
+    } else if (arr[i] + arr[j] > target) j--;
+    else if (arr[i] + arr[j] < target) i++;
   }
-  return dp[target];
+  return [i, j];
 }
 
-console.log(findTargetSumWays([0, 0, 0, 0, 0, 0, 0, 0, 1], 1));
+// console.log(twoSum([3, 2, 3], 6));
+function anagram(s1, s2) {
+  let xor1 = s1.split("").reduce((acc, curr) => acc ^ curr.charCodeAt(0), 0);
+  let xor2 = s2.split("").reduce((acc, curr) => acc ^ curr.charCodeAt(0), 0);
+
+  if (xor1 == xor2) return true;
+  return false;
+}
+
+console.log(anagram("abc", "aabc"));
+
+function groupAnagram(strs) {
+  const x = strs.map((str) =>
+    str.split().reduce(
+      (acc, curr) => {
+        return [acc[0] ^ curr.charCodeAt(0), acc[1]];
+      },
+      [0, str],
+    ),
+  );
+
+  const result = Object.groupBy(x, ([code]) => code);
+  return Object.values(result).map((val) => val.map((x) => x[1]));
+}
+
+console.log(groupAnagram(["eat", "tea", "tan", "ate", "nat", "bat"]));

@@ -3,11 +3,11 @@ function deleteMid(stack: number[], k = Math.floor(stack.length / 2) + 1) {
   let temp = stack.pop();
 
   if (k === 1) {
-    return
+    return;
   } else {
     deleteMid(stack, k - 1);
     stack.push(temp!);
-    return
+    return;
   }
 }
 
@@ -21,7 +21,7 @@ function reverseStack(s: number[]) {
 
   reverseStack(s);
   // s.unshift(el)
-  insert(s, el)
+  insert(s, el);
   return;
 }
 
@@ -29,8 +29,17 @@ function insert(s: number[], k: number) {
   if (s.length === 0) return s.push(k);
   const el = s.pop()!;
   insert(s, k);
-  s.push(el)
+  s.push(el);
 }
 
-reverseStack(s)
+reverseStack(s);
 console.log(s);
+
+function deleteMidStack(arr: number[]) {
+  let m = (arr.length / 2 + 1) >> 1;
+  let el = arr.pop();
+}
+
+/* 
+  
+*/

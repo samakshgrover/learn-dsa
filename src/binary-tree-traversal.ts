@@ -106,7 +106,7 @@ function max_in_binary_tree(root: TreeNode | null): number {
   return Math.max(
     root.val,
     max_in_binary_tree(root.left),
-    max_in_binary_tree(root.right)
+    max_in_binary_tree(root.right),
   );
 }
 
@@ -126,7 +126,7 @@ function max_in_binary_tree_iterative(root: TreeNode | null) {
 
 function search_in_bt_recursive(
   root: TreeNode | null,
-  target: number
+  target: number,
 ): boolean {
   if (root === null) return false;
   if (root.val === target) return true;
@@ -138,7 +138,7 @@ function search_in_bt_recursive(
 
 function search_in_bt_iterative(
   root: TreeNode | null,
-  target: number
+  target: number,
 ): boolean {
   if (root === null) return false;
   const stack: TreeNode[] = [root];
@@ -194,15 +194,16 @@ function size_binary_tree_iterative(root: TreeNode | null): number {
 function reverse_level_order(root: TreeNode | null): number[][] {
   if (root === null) return [];
   const stack: TreeNode[][] = [[root]];
-  let i = 0;
+}
+let i = 0;
 
-  while (stack.length > i) {
-    const currentStack = stack[i];
-    let nodeStack: TreeNode[] = [];
-    for (let current of currentStack) {
-      if (current.left) nodeStack.push(current.left);
-      if (current.right) nodeStack.push(current.right);
-    }
-    i++;
+while (stack.length > i) {
+  const currentStack = stack[i];
+  let nodeStack: TreeNode[] = [];
+  for (let current of currentStack) {
+    if (current.left) nodeStack.push(current.left);
+    if (current.right) nodeStack.push(current.right);
   }
+  i++;
+}
 }
